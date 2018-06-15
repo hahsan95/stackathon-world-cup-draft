@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const { User, Countries } = require('../server/db/models')
 
 /**
  * Welcome to the seed file! This seed file uses a newer language feature called...
@@ -39,7 +39,7 @@ if (module === require.main) {
       console.error(err)
       process.exitCode = 1
     })
-    .finally(() => {
+    .then(() => {
       // `finally` is like then + catch. It runs no matter what.
       console.log('closing db connection')
       db.close()

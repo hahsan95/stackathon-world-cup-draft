@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
+
 const Countries = db.define('countries', {
   name: {
     type: Sequelize.STRING,
@@ -12,5 +13,7 @@ const Countries = db.define('countries', {
     allowNull: false
   }
 })
+
+
 
 module.exports = Countries
