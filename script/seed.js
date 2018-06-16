@@ -24,6 +24,41 @@ async function seed() {
     User.create({email: 'cody@email.com', password: '123'}),
     User.create({email: 'murphy@email.com', password: '123'})
   ])
+
+  const countries = await Promise.all([
+    Countries.create({name: 'Brazil', group: 'E', groupId: 797}),
+    Countries.create({name: 'Germany', group: 'F', groupId: 798}),
+    Countries.create({name: 'Spain', group: 'B', groupId: 794}),
+    Countries.create({name: 'France', group: 'C', groupId: 795}),
+    Countries.create({name: 'Argentina', group: 'D', groupId: 796}),
+    Countries.create({name: 'Belgium', group: 'G', groupId: 799}),
+    Countries.create({name: 'England', group: 'G', groupId: 799}),
+    Countries.create({name: 'Portugal', group: 'B', groupId: 794}),
+    Countries.create({name: 'Uruguay', group: 'A', groupId: 793}),
+    Countries.create({name: 'Croatia', group: 'D', groupId: 796}),
+    Countries.create({name: 'Colombia', group: 'H', groupId: 800}),
+    Countries.create({name: 'Russia', group: 'A', groupId: 793 }),
+    Countries.create({name: 'Poland', group: 'H', groupId: 800}),
+    Countries.create({name: 'Denmark', group: 'C', groupId: 795}),
+    Countries.create({name: 'Switzerland', group: 'E', groupId: 797}),
+    Countries.create({name: 'Mexico', group: 'F', groupId: 798}),
+    Countries.create({name: 'Serbia', group: 'E', groupId: 797}),
+    Countries.create({name: 'Peru', group: 'C', groupId: 795}),
+    Countries.create({name: 'Senegal', group: 'H', groupId: 800}),
+    Countries.create({name: 'Sweden', group: 'F', groupId: 798}),
+    Countries.create({name: 'Egypt', group: 'A', groupId: 793}),
+    Countries.create({name: 'Iceland', group: 'D', groupId: 796}),
+    Countries.create({name: 'Nigeria', group: 'D', groupId: 796}),
+    Countries.create({name: 'Morocco', group: 'B', groupId: 794}),
+    Countries.create({name: 'Japan', group: 'H', groupId: 800}),
+    Countries.create({name: 'Korea Republic', group: 'F', groupId: 798}),
+    Countries.create({name: 'Costa Rica', group: 'E', groupId: 797}),
+    Countries.create({name: 'Australia', group: 'C', groupId: 795}),
+    Countries.create({name: 'Iran', group: 'B', groupId: 794}),
+    Countries.create({name: 'Tunisia', group: 'G', groupId: 799}),
+    Countries.create({name: 'Panama', group: 'G', groupId: 799}),
+    Countries.create({name: 'Saudi Arabia', group: 'A', groupId: 793})
+  ])
   // Wowzers! We can even `await` on the right-hand side of the assignment operator
   // and store the result that the promise resolves to in a variable! This is nice!
   console.log(`seeded ${users.length} users`)

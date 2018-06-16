@@ -8,7 +8,11 @@ const Countries = db.define('countries', {
     unique: true,
     allowNull: false
   },
-  league: {
+  group: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  groupId: {
     type: Sequelize.INTEGER,
     allowNull: false
   }

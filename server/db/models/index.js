@@ -1,6 +1,7 @@
 const User = require('./user')
 const Countries = require ('./countries')
 const Goals = require ('./goals')
+const scoreReturner = require ('../../livescoreapi/livescore')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -22,5 +23,6 @@ const Goals = require ('./goals')
 module.exports = {
   User,
   Countries,
-  Goals
+  Goals,
+  scoreReturner
 }
