@@ -4,27 +4,32 @@ const Games = require('../db/models/games')
 
 if (process.env.NODE_ENV !== 'production') require('../../secrets')
 
-let setGames = async (match) => {
+let setGame = async (match) => {
   for(let i = 0; i < match.length; i++) {
     Games.create({ gameId: await match[i].id, homeTeam: await match[i].home_name, awayTeam: await match[i].away_name })
   }
 
 }
 
-let getGamesFromAPI = async () => {
-  let response = await axios.get(`http://livescore-api.com/api-client/scores/history.json?key=${process.env.LIVESCORE_API_KEY}&secret=${process.env.LIVESCORE_API_SECRET}&league=794`)
+let getGamesFromAPI = async (league) => {
+  let response = await axios.get(`http://livescore-api.com/api-client/scores/history.json?key=${process.env.LIVESCORE_API_KEY}&secret=${process.env.LIVESCORE_API_SECRET}&league=${league}`)
   try {
     let matches = response.data.data.match
-    setGames(matches)
-    console.log('testing***testing', matches)
+    setGame(matches)
+    console.log(`*** league ${league} synced ***`)
 
   } catch (err) {
     console.log('caught an error', err)
   }
 }
 
-getGamesFromAPI()
-
+let setEveryLeague = async () => {
+  for (let i = 793; i <= 800; i++) {
+    await getGamesFromAPI(i)
+    console.log(i)
+  }
+}
+setEveryLeague()
 
 // let scoreReturner = async () => {
 //   let response = await axios.get(`http://livescore-api.com/api-client/scores/history.json?key=${process.env.LIVESCORE_API_KEY}&secret=${process.env.LIVESCORE_API_SECRET}&league=794`)
