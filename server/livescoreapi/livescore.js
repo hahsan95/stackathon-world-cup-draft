@@ -26,22 +26,7 @@ let getGamesFromAPI = async (league) => {
 let setEveryLeague = async () => {
   for (let i = 793; i <= 800; i++) {
     await getGamesFromAPI(i)
-    console.log(i)
   }
 }
 setEveryLeague()
-
-// let scoreReturner = async () => {
-//   let response = await axios.get(`http://livescore-api.com/api-client/scores/history.json?key=${process.env.LIVESCORE_API_KEY}&secret=${process.env.LIVESCORE_API_SECRET}&league=794`)
-//   try {
-//     let match = response.data.data.match[0]
-//     console.log('**poop**', response.data.data.match)
-//   } catch (err) {
-//     console.log('caught an error', err)
-//   }
-// }
-
-// Games.create({ gameId: match.id, homeTeam: match.home_name, awayTeam: match.away_name }).then(game => console.log('**testing**', game))
-
-// scoreReturner()
 
