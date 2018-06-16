@@ -1,6 +1,7 @@
 const User = require('./user')
-const Countries = require ('./countries')
-const Goals = require ('./goals')
+const Countries = require('./countries')
+const Goals = require('./goals')
+const Games = require('./games')
 const scoreReturner = require ('../../livescoreapi/livescore')
 
 /**
@@ -24,5 +25,6 @@ module.exports = {
   User,
   Countries,
   Goals,
+  Games,
   scoreReturner
 }
