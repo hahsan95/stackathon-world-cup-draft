@@ -4,30 +4,7 @@ const Games = require('../db/models/games')
 
 if (process.env.NODE_ENV !== 'production') require('../../secrets')
 
-// let exists = async (id) => {
-
-//     let check = await Games.findOne({
-//       where: {
-//         gameId: await id
-//       }
-//     })
-//     if(check){
-//       console.log('is in db')
-//     }
-//     else {
-//       console.log('not in db')
-//     }
-
-// }
-
-// let getExists = async (id) => {
-//   await exists(id)
-// }
-// console.log(getExists(123), '***')
-
-
 let setGame = async (match) => {
-
     try {
       for(let i = 0; i < match.length; i++) {
         let check = await Games.findOne({
@@ -36,7 +13,7 @@ let setGame = async (match) => {
           }
         })
         if(!check) {
-          Games.create({ gameId: await match[i].id, homeTeam: await match[i].home_name, awayTeam: await match[i].away_name })
+          Games.create({ gameId: await match[i].id, homeTeam: await match[i].home_name, awayTeam: await match[i].away_name, score: match[i].score })
         } else {
           console.log('already in database')
         }
@@ -44,14 +21,7 @@ let setGame = async (match) => {
     } catch (err) {
       console.log('YOU GOT AN ERROR!')
     }
-
-
-
 }
-
-// if(exists(match[i].id) !== null) {
-//   Games.create({ gameId: await match[i].id, homeTeam: await match[i].home_name, awayTeam: await match[i].away_name })
-// }
 
 let getGamesFromAPI = async (league) => {
   let response = await axios.get(`http://livescore-api.com/api-client/scores/history.json?key=${process.env.LIVESCORE_API_KEY}&secret=${process.env.LIVESCORE_API_SECRET}&league=${league}`)
@@ -70,17 +40,23 @@ let setEveryLeague = async () => {
     await getGamesFromAPI(i)
   }
 }
+
+/*
+Initial DB Population
+*/
+
 setEveryLeague()
 
 /*
 Checking For New Scores Every Hour
 */
 
-// let checkingEveryHour = () => {
-//   console.log('Checking For Newly Completed Matches')
-//   setEveryLeague()
-// }
-// setInterval(checkingEveryHour, 60*60*1000)
+let checkingEveryHour = () => {
+  console.log('Checking For Newly Completed Matches')
+  setEveryLeague()
+}
+
+setInterval(checkingEveryHour, 60*60*1000)
 
 
 

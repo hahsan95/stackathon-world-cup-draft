@@ -12,7 +12,15 @@ const Games = db.define('games', {
   },
   awayTeam: {
     type: Sequelize.STRING,
-    allowNull:false
+    allowNull: false
+  },
+  score: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  pointsAddedToPlayer: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 
