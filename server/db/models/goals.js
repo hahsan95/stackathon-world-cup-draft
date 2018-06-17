@@ -17,6 +17,10 @@ const Goals = db.define('goals', {
   onName: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  pointsAwarded: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   }
 })
 

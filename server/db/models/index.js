@@ -13,7 +13,7 @@ const sortingalgorithm = require ('../../livescoreapi/sortingalgorithm')
  */
 
  Countries.hasMany(Goals)
- Goals.belongsTo(Countries)
+ Goals.belongsTo(User)
  Countries.belongsTo(User)
 
 /**
