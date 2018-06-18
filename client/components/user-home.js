@@ -8,11 +8,13 @@ import {connect} from 'react-redux'
  * COMPONENT
  */
 export const UserHome = props => {
-  const {email} = props
+  const {email, points} = props
+  console.log('***', props)
 
   return (
     <div>
       <h3>Welcome, {email}</h3>
+      <h2>You have {points} points</h2>
     </div>
   )
 }
@@ -22,7 +24,8 @@ export const UserHome = props => {
  */
 const mapState = state => {
   return {
-    email: state.user.email
+    email: state.user.email,
+    points: state.user.points
   }
 }
 
@@ -33,4 +36,5 @@ export default connect(mapState)(UserHome)
  */
 UserHome.propTypes = {
   email: PropTypes.string
+  // points: PropTypes.number
 }

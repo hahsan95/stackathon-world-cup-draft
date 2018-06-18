@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getScoresListThunk } from '../store'
 
-class allScores extends Component {
+class AllScores extends Component {
 
   async componentDidMount() {
     if (this.props.scores.length === 0) {
@@ -33,4 +33,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(allScores)
+export default connect(mapStateToProps, mapDispatchToProps)(AllScores)
