@@ -21,6 +21,10 @@ const Goals = db.define('goals', {
   pointsAwarded: {
     type: Sequelize.INTEGER,
     allowNull: false
+  },
+  recorded : {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 

@@ -25,6 +25,7 @@ let sortingAlgorithm = async () => {
         }
       }
     })
+
     if (homeGoals.length && scoreHome) {
       for (let z = 0; z < scoreHome; z++){
         let byName = unaccountedForGames[i].homeTeam
@@ -52,7 +53,7 @@ let sortingAlgorithm = async () => {
         }
 
         Goals.create({
-          byRank: byRank, byName: byName, onRank: onRank, onName: onName, pointsAwarded: pointsAwarded
+          byRank: byRank, byName: byName, onRank: onRank, onName: onName, pointsAwarded: pointsAwarded, userId: homeGoals[0].userId
         })
       }
     }
@@ -96,7 +97,7 @@ let sortingAlgorithm = async () => {
         }
 
         Goals.create({
-          byRank: byRank, byName: byName, onRank: onRank, onName: onName, pointsAwarded: pointsAwarded
+          byRank: byRank, byName: byName, onRank: onRank, onName: onName, pointsAwarded: pointsAwarded, userId: awayGoals[0].userId
         })
       }
     }

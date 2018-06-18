@@ -1,6 +1,7 @@
 const axios = require('axios')
 const Games = require('../db/models/games')
 const sortingAlgorithm = require('./sortingalgorithm')
+const pointCounter = require('./pointCounter')
 
 
 if (process.env.NODE_ENV !== 'production') require('../../secrets')
@@ -49,6 +50,7 @@ Initial DB Population
 let initialCheck = async () => {
   await setEveryLeague()
   await sortingAlgorithm()
+  await pointCounter()
 }
 
 initialCheck()
@@ -61,6 +63,7 @@ let checkingEveryHour = async () => {
   console.log('Checking For Newly Completed Matches')
   await setEveryLeague()
   await sortingAlgorithm()
+  await pointCounter()
 }
 
 setInterval(checkingEveryHour, 60*60*1000)
