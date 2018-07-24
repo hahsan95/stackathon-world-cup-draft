@@ -2,10 +2,6 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Games = db.define('games', {
-  gameId: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
   homeTeam: {
     type: Sequelize.STRING,
     allowNull: false
@@ -14,7 +10,11 @@ const Games = db.define('games', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  score: {
+  score1: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  score2: {
     type: Sequelize.STRING,
     allowNull: false
   },

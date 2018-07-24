@@ -22,6 +22,7 @@ class AllScores extends Component {
 
 
 const mapStateToProps = (store) => {
+  console.log('***POOPALOOP***', store)
   return {
     scores: store.allScores.scores
   }
