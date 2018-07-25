@@ -4,6 +4,7 @@ const Goals = require('./goals')
 const Games = require('./games')
 const scoresCounter = require('../../newscoreapi/scores')
 const pointCounter = require('../../newscoreapi/pointcounter')
+const pointAdder = require('../../newscoreapi/pointAdder')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -28,5 +29,6 @@ module.exports = {
   Goals,
   Games,
   scoresCounter,
-  pointCounter
+  pointCounter,
+  pointAdder
 }

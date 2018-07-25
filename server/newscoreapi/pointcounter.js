@@ -58,5 +58,47 @@ let goalCounterAway = async () => {
   }
 }
 
+let goalAdderBy = async () => {
+  let goals = await Goals.findAll()
+  for(let i = 0; i < goals.length; i++){
+    let byRankCountry = await Countries.findOne({
+      where: {
+        name: goals[i].byName
+      }
+    })
+    let byRank = byRankCountry.id
+    let updateByRank = await Goals.update({
+        byRank: byRank
+      }, {
+        where: {
+          byName: goals[i].byName
+        }
+      }
+  )}
+}
+
+let goalAdderOn = async () => {
+  let goals = await Goals.findAll()
+  for(let i = 0; i < goals.length; i++){
+    let onRankCountry = await Countries.findOne({
+      where: {
+        name: goals[i].onName
+      }
+    })
+    let onRank = onRankCountry.id
+    let updateByRank = await Goals.update({
+        onRank: onRank
+      }, {
+        where: {
+          onName: goals[i].onName
+        }
+      }
+  )}
+}
+
+
 // goalCounterHome();
 // goalCounterAway();
+// goalAdderBy();
+// goalAdderOn();
+
