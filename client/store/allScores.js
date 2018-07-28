@@ -9,7 +9,7 @@ const GET_ALL_SCORES = 'GET_ALL_SCORES'
  * INITIAL STATE
  */
 const scores = {
-  scores: []
+  scoresList: []
 }
 
 /**
@@ -39,7 +39,7 @@ export const getScoresListThunk = () => {
 export default function (state = scores, action) {
   switch (action.type) {
     case GET_ALL_SCORES:
-      return { ...state, scores: action.scores}
+      return { ...state, scoresList: action.scoresList }
     default:
       return state
   }

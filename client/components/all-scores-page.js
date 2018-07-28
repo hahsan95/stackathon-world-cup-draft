@@ -5,16 +5,20 @@ import { getScoresListThunk } from '../store'
 class AllScores extends Component {
 
   async componentDidMount() {
-    if (this.props.scores.length === 0) {
+    if (this.props.scoresList.length === 0) {
       await this.props.getScoresListThunk()
     }
   }
 
+
   render () {
-    console.log(this.props)
+    console.log('this.props: ', this.props.scoresList)
+    let scores = this.props.scoresList.sort((a, b) => a.points < b.points)
     return(
       <div>
-        <h2>Hello World!</h2>
+          {
+            scores.map(score => <h1 key={score.id}>{score.name}: {score.points}</h1>)
+          }
       </div>
     )
   }
@@ -22,9 +26,10 @@ class AllScores extends Component {
 
 
 const mapStateToProps = (store) => {
-  console.log('***POOPALOOP***', store)
+  console.log('store: ', store)
+  // console.log('state: ', this.state)
   return {
-    scores: store.allScores.scores
+    scoresList: store.allScores.scoresList
   }
 }
 
