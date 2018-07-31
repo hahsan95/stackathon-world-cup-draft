@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getCountriesThunk } from '../store'
-import { Header, Table, Container, Flag } from 'semantic-ui-react'
+import { Grid, Header, Table, Container, Flag } from 'semantic-ui-react'
 
 const style = {
   h1: {
@@ -29,26 +29,28 @@ class UserTeams extends Component {
 
   render () {
     let countries = this.props.countryList
-    let flags = [{name: 'Egypt', flag: ''},
-    {name: 'Brazil', flag: ''},
-    {name: 'Sweden', flag: ''},
-    {name: 'Iceland', flag: ''},
-    {name: 'Uruguay', flag: ''},
-    {name: 'Poland', flag: ''},
-    {name: 'Peru', flag: ''},
-    {name: 'Morocco', flag: ''},
-    {name: 'Germany', flag: ''},
-    {name: 'Russia', flag: ''},
-    {name: 'Senegal', flag: ''},
-    {name: 'Saudi Arabia', flag: ''},
-    {name: 'Belgium', flag: ''},
-    {name: 'Panama', flag: ''},
-    {name: 'France', flag: ''},
-    {name: 'Nigeria', flag: ''},
-    {name: 'Argentina', flag: ''},
-    {name: 'Colombia', flag: ''},
-    {name: 'Japan', flag: ''},
-    {name: 'Costa Rica', flag: ''}]
+
+    let flags = [{name: 'Egypt', flag: 'eg'},
+    {name: 'Brazil', flag: 'br'},
+    {name: 'Sweden', flag: 'se'},
+    {name: 'Iceland', flag: 'is'},
+    {name: 'Uruguay', flag: 'uy'},
+    {name: 'Poland', flag: 'pl'},
+    {name: 'Peru', flag: 'pe'},
+    {name: 'Morocco', flag: 'ma'},
+    {name: 'Germany', flag: 'de'},
+    {name: 'Russia', flag: 'ru'},
+    {name: 'Senegal', flag: 'sn'},
+    {name: 'Saudi Arabia', flag: 'sa'},
+    {name: 'Belgium', flag: 'be'},
+    {name: 'Panama', flag: 'pa'},
+    {name: 'France', flag: 'fr'},
+    {name: 'Nigeria', flag: 'ng'},
+    {name: 'Argentina', flag: 'ar'},
+    {name: 'Colombia', flag: 'co'},
+    {name: 'Japan', flag: 'jp'},
+    {name: 'Costa Rica', flag: 'cr'}]
+
     let userIdHelper = (id) => {
       let teams = []
       for(let i = 0; i < countries.length; i++){
@@ -56,31 +58,138 @@ class UserTeams extends Component {
           teams.push(countries[i])
         }
       }
+      for(let i = 0; i < teams.length; i++){
+        for(let z = 0; z < flags.length; z++){
+          if(teams[i].name === flags[z].name){
+            teams[i].flag = flags[z].flag
+          }
+        }
+      }
       return teams
     }
 
-    return(<div>
-      <Header as='h3' content='User Teams' style={style.h3} textAlign='center' />
-      <Container>
-        <Table celled>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Seed</Table.HeaderCell>
-              <Table.HeaderCell>Country</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
+    let homum = userIdHelper(1).sort((a, b) => a.id > b.id)
+    let patrick = userIdHelper(2).sort((a, b) => a.id > b.id)
+    let calvin = userIdHelper(3).sort((a, b) => a.id > b.id)
+    let abhi = userIdHelper(4).sort((a, b) => a.id > b.id)
+    let burke = userIdHelper(5).sort((a, b) => a.id > b.id)
 
-          <Table.Body>
-            {
-              countries.map(countryList => <Table.Row key={countryList.id}>
-                <Table.Cell>{countryList.id}</Table.Cell>
-                <Table.Cell><Flag name='ae' />{countryList.name}</Table.Cell>
-              </Table.Row>)
-            }
-          </Table.Body>
-        </Table>
-      </Container>
-    </div>)
+    return(<Container>
+      {/* <Grid columns={3}>
+        <Grid.Row>
+          <Grid.Column> */}
+            <Header as='h3' content="Homum's Teams" style={style.h3} textAlign='center' />
+
+              <Table celled width='200px'>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Seed</Table.HeaderCell>
+                    <Table.HeaderCell>Country</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                  {
+                    homum.map(countryList => <Table.Row key={countryList.id}>
+                      <Table.Cell>{countryList.id}</Table.Cell>
+                      <Table.Cell><Flag name={countryList.flag} />{countryList.name}</Table.Cell>
+                    </Table.Row>)
+                  }
+                </Table.Body>
+              </Table>
+
+            {/* </Grid.Column> */}
+            <Header as='h3' content="Patrick's Teams" style={style.h3} textAlign='center' />
+
+              <Table celled width='200px'>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Seed</Table.HeaderCell>
+                    <Table.HeaderCell>Country</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                  {
+                    patrick.map(countryList => <Table.Row key={countryList.id}>
+                      <Table.Cell>{countryList.id}</Table.Cell>
+                      <Table.Cell><Flag name={countryList.flag} />{countryList.name}</Table.Cell>
+                    </Table.Row>)
+                  }
+                </Table.Body>
+              </Table>
+
+            {/* <Grid.Column> */}
+            <Header as='h3' content="Calvin's Teams" style={style.h3} textAlign='center' />
+
+              <Table celled width='200px'>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Seed</Table.HeaderCell>
+                    <Table.HeaderCell>Country</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                  {
+                    calvin.map(countryList => <Table.Row key={countryList.id}>
+                      <Table.Cell>{countryList.id}</Table.Cell>
+                      <Table.Cell><Flag name={countryList.flag} />{countryList.name}</Table.Cell>
+                    </Table.Row>)
+                  }
+                </Table.Body>
+              </Table>
+
+            {/* </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column> */}
+            <Header as='h3' content="Abhi's Teams" style={style.h3} textAlign='center' />
+
+              <Table celled width='200px'>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Seed</Table.HeaderCell>
+                    <Table.HeaderCell>Country</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                  {
+                    abhi.map(countryList => <Table.Row key={countryList.id}>
+                      <Table.Cell>{countryList.id}</Table.Cell>
+                      <Table.Cell><Flag name={countryList.flag} />{countryList.name}</Table.Cell>
+                    </Table.Row>)
+                  }
+                </Table.Body>
+              </Table>
+
+            {/* </Grid.Column>
+            <Grid.Column> */}
+            <Header as='h3' content="Burke's Teams" style={style.h3} textAlign='center' />
+
+              <Table celled width='200px'>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Seed</Table.HeaderCell>
+                    <Table.HeaderCell>Country</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                  {
+                    burke.map(countryList => <Table.Row key={countryList.id}>
+                      <Table.Cell>{countryList.id}</Table.Cell>
+                      <Table.Cell><Flag name={countryList.flag} />{countryList.name}</Table.Cell>
+                    </Table.Row>)
+                  }
+                </Table.Body>
+              </Table>
+
+            {/* </Grid.Column>
+          </Grid.Row>
+        </Grid> */}
+    </Container>)
 
   }
 
