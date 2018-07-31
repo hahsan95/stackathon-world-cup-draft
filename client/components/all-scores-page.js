@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getScoresListThunk } from '../store'
 import { Header, Grid, Segment, Table, Container, Image } from 'semantic-ui-react'
-import UserTeams from './user-teams-page'
 
 const style = {
   h1: {
@@ -33,7 +32,6 @@ class AllScores extends Component {
     let scores = this.props.scoresList.sort((a, b) => a.points < b.points)
     return(
       <div>
-        <UserTeams />
         <Header as='h3' content='Final Scores Table' style={style.h3} textAlign='center' />
         <Container>
           <Table celled>
