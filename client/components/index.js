@@ -6,4 +6,5 @@
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
 export {default as AllScores} from './all-scores-page'
+export {default as UserTeams} from './user-teams-page'
 export {Login, Signup} from './auth-form'

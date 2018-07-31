@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getScoresListThunk } from '../store'
 import { Header, Grid, Segment, Table, Container, Image } from 'semantic-ui-react'
+import UserTeams from './user-teams-page'
 
 const style = {
   h1: {
@@ -29,13 +30,10 @@ class AllScores extends Component {
 
 
   render () {
-    console.log('this.props: ', this.props.scoresList)
     let scores = this.props.scoresList.sort((a, b) => a.points < b.points)
     return(
       <div>
-          {/* {
-            scores.map(score => <h3 key={score.id}>{score.name}: {score.points}</h3>)
-          } */}
+        <UserTeams />
         <Header as='h3' content='Final Scores Table' style={style.h3} textAlign='center' />
         <Container>
           <Table celled>
@@ -47,9 +45,8 @@ class AllScores extends Component {
             </Table.Header>
 
             <Table.Body>
-
               {
-                scores.map(score => <Table.Row>
+                scores.map(score => <Table.Row key={score.id}>
                   <Table.Cell>
                   <Header as='h4' image>
                     {/* <Image rounded size='mini' src='/images/wireframe/square-image.png' /> */}
@@ -62,8 +59,6 @@ class AllScores extends Component {
                   <Table.Cell>{score.points}</Table.Cell>
                 </Table.Row>)
               }
-
-
             </Table.Body>
           </Table>
         </Container>
@@ -74,8 +69,6 @@ class AllScores extends Component {
 
 
 const mapStateToProps = (store) => {
-  console.log('store: ', store)
-  // console.log('state: ', this.state)
   return {
     scoresList: store.allScores.scoresList
   }
